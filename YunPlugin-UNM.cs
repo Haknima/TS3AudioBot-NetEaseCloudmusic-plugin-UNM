@@ -54,7 +54,7 @@ public class YunPlugin : IBotPlugin
             }
 
             string location = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
-            iniFilePath = File.Exists(dockerEnvFilePath) ? location + "/data/plugins/YunSettings.ini" : location + "/plugins/YunSettings.ini";
+            iniFilePath = File.Exists(dockerEnvFilePath) ? location + "/data/plugins/YunSettings.ini" : location + "./plugins/YunSettings.ini";
         }
         else
         {
@@ -490,7 +490,7 @@ public class YunPlugin : IBotPlugin
         string musicurljson = await HttpGetAsync(url);
         musicURL musicurl = JsonSerializer.Deserialize<musicURL>(musicurljson);
         string mp3 = musicurl.data[0].url.ToString();
-        string checkmp3 = mp3.Replace("http://music.163.com", UNM_Address);
+        string checkmp3 = mp3.Replace("https://music.163.com", UNM_Address);
         return checkmp3;
     }
 
